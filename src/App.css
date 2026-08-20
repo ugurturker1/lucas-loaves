@@ -1,0 +1,43 @@
+/* general settings colours*/
+body { background-color: #f9f6f0; font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; padding: 0; }
+.bg-brand-dark { background-color: #4a2e1b !important; color: white; }
+.text-brand { color: #4a2e1b !important; }
+
+/* buttons */
+.btn-main { background-color: #000000; color: white; border: none; transition: 0.3s; font-weight: 500; }
+.btn-main:hover { background-color: #333; color: white; }
+.btn-add { background-color: #4a2e1b; color: white; border: none; transition: 0.3s; }
+.btn-add:hover { background-color: #6b4329; color: white; }
+.btn-remove { background-color: #d9534f; color: white; font-weight: bold; border: none; }
+.btn-remove:hover { background-color: #c9302c; color: white; }
+
+/* 1. home */
+.hero-image { 
+  background: url('https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=1000&auto=format&fit=crop') center/cover no-repeat; 
+  border-radius: 12px; 
+  min-height: 400px;
+  width: 100%;
+}
+
+/* photo */
+.firin-vitrini { 
+  background: url('./img/firin.jpg') center/cover no-repeat !important; 
+  border-radius: 12px; 
+  min-height: 500px; 
+  width: 100%;
+}
+
+/* photo */
+.hamur-ustasi { 
+  background: url('./img/usta.jpg') center/cover no-repeat !important; 
+  border-radius: 12px; 
+  min-height: 500px; 
+  width: 100%;
+}
+
+/* categories and map */
+.category-btn { background-color: #e9e2d5; border: 2px solid #d4a373; color: #4a2e1b; transition: 0.3s; font-weight: bold; border-radius: 8px; }
+.category-btn:hover { background-color: #d4a373; color: white; }
+.course-banner { background-color: #4a2e1b; color: white; cursor: pointer; transition: 0.3s; }
+.course-banner:hover { background-color: #000000; }
+.map-iframe-container { min-height: 400px; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
