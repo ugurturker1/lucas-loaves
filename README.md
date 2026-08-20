@@ -1,16 +1,49 @@
-# React + Vite
+# 🍞 Luca's Loaves - Full-Stack Bakery Web Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+## 📖 About the Project
+A full-stack dynamic web application and RESTful API developed for the "Luca's Loaves" bakery. This project features a modern Node.js/Express backend connected to a MongoDB database, and a user-friendly React frontend. It also includes interactive API documentation integrated with Swagger UI.
 
-Currently, two official plugins are available:
+## ✨ Key Features
+* **Dynamic Product Management:** Bakery menu items are fetched dynamically from the database and displayed on the frontend.
+* **Secure Order Processing:** Customers can add items to their cart and submit orders. The backend automatically calculates total prices server-side to prevent data manipulation and ensure data integrity.
+* **RESTful API Architecture:** Full CRUD (Create, Read, Update, Delete) operations are supported for products and orders.
+* **API Documentation:** Interactive and testable API documentation built using `swagger-ui-express`.
+* **CORS Security:** Configured to securely handle cross-origin requests between the client and the server.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🛠️ Tech Stack
 
-## React Compiler
+### Frontend
+* **Library/Framework:** React.js
+* **Build Tool:** Vite
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Backend
+* **Runtime:** Node.js
+* **Framework:** Express.js
+* **Database:** MongoDB & Mongoose ODM
+* **Documentation:** Swagger UI (`swagger-jsdoc`, `swagger-ui-express`)
+* **Security & Configuration:** CORS, Dotenv (`.env`)
 
-## Expanding the Oxlint configuration
+## 🚀 Getting Started & Installation
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+To get a local copy up and running, follow these simple steps:
+
+**1. Clone the repository:**
+\`\`\`bash
+git clone https://github.com/ugurturker1/lucas-loaves.git
+cd lucas-loaves
+\`\`\`
+
+**2. Install dependencies:**
+Install the required NPM packages for the project.
+\`\`\`bash
+npm install
+\`\`\`
+
+**3. Set up Environment Variables:**
+Create a `.env` file in the root directory and add your MongoDB URI and port configuration (e.g., `MONGO_URI=mongodb+srv://...`).
+
+**4. Start the development server:**
+Run the following command to start the project (based on your package.json scripts):
+\`\`\`bash
+npm run dev
+\`\`\`
