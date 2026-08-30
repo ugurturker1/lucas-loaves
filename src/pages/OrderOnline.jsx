@@ -17,20 +17,26 @@ const GoodComponent = memo(() => {
 export default function OrderOnline({ cart, setCart }) {
   const [view, setView] = useState('categories');
   const [quantities, setQuantities] = useState({});
-  // API'den gelecek veriler için state (başlangıçta boş)
   const [allProducts, setAllProducts] = useState({ bread: [], cakes: [], sweets: [], flour: [] });
   const [loading, setLoading] = useState(true);
+  
+  
+  const [error, setError] = useState(null);
 
-  // Sayfa yüklendiğinde API'den verileri çekiyoruz
+  
   useEffect(() => {
     fetch('http://localhost:5000/api/products')
-      .then(res => res.json())
+      .then(res => {
+        
+        if (!res.ok) {
+          throw new Error(`Server Error (${res.status}): Failed to fetch menu items.`);
+        }
+        return res.json();
+      })
       .then(data => {
-        // Gelen düz ürün listesini senin eski statik yapın gibi kategorilere ayırıyoruz
         const groupedProducts = { bread: [], cakes: [], sweets: [], flour: [] };
         
         data.forEach(product => {
-          // MongoDB'den gelen _id'yi, frontend'in beklediği id formatına kopyalıyoruz
           const formattedProduct = { ...product, id: product._id };
           
           if (groupedProducts[product.category]) {
@@ -38,11 +44,16 @@ export default function OrderOnline({ cart, setCart }) {
           }
         });
         
-        setAllProducts(groupedProducts);
-        setLoading(false);
+        
+        setTimeout(() => {
+          setAllProducts(groupedProducts);
+          setLoading(false);
+        }, 1000); 
       })
-      .catch(error => {
-        console.error('Ürünler çekilirken hata oluştu:', error);
+      .catch(err => {
+        console.error('Error:', err);
+        
+        setError(err.message);
         setLoading(false);
       });
   }, []);
@@ -81,11 +92,25 @@ export default function OrderOnline({ cart, setCart }) {
     }
   };
 
-  // Veriler yüklenirken Loading göster
+  
   if (loading) {
     return (
-      <div className="container py-5 text-center">
-        <h2>Loading Menu...</h2>
+      <div className="container py-5 text-center mt-5">
+        <div className="spinner-border text-warning mb-3" style={{width: '3rem', height: '3rem'}} role="status"></div>
+        <h2>Loading Menu... 🍞</h2>
+      </div>
+    );
+  }
+
+  
+  if (error) {
+    return (
+      <div className="container py-5 text-center mt-5">
+        <div className="alert alert-danger d-inline-block shadow">
+          <h3 className="text-danger mb-3">⚠️ Oops! Something went wrong.</h3>
+          <p className="fs-5">{error}</p>
+          <p className="text-muted">Please make sure the backend server is running.</p>
+        </div>
       </div>
     );
   }
